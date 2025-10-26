@@ -1,33 +1,27 @@
 package br.com.alldirect.luan.todolist.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@Entity(name="tb_users")
+@Entity
+@Table(name = "tb_users") // agora 'tb_users' é o nome da TABELA
 public class UserModel {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID) // generator padrão para UUID no Hibernate 6
     private UUID id;
 
-
-    @Column(name = "usuario")
+    @Column(name = "USUARIO", unique = true)
     private String userName;
+
     private String name;
     private String password;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-
-
 }
