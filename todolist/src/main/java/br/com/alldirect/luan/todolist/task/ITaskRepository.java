@@ -1,0 +1,12 @@
+package br.com.alldirect.luan.todolist.task;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
+
+
+public interface ITaskRepository extends JpaRepository<TaskModel, UUID> {
+
+}
